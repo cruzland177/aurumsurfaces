@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Superficies Aurum</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet" />
+<style>
+body {
+margin: 0;
+font-family: 'Montserrat', sans-serif;
+background-color: #1f1f1f;
+color: #f1f1f1;
+}
+
+header {
+background: #121212;
+padding: 30px;
+text-align: center;
+}
+
+header h1 {
+font-size: 2.5rem;
+margin: 0;
+}
+
+nav {
+position: sticky;
+top: 0;
+z-index: 1000;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+background-color: #2c2c2c;
+padding: 10px 0;
+box-shadow: 0 2px 5px rgba(0,0,0,0.6);
+}
+
+nav a {
+color: #f1f1f1;
+margin: 0 10px;
+text-decoration: none;
+padding: 8px 12px;
+border-radius: 5px;
+transition: background 0.3s;
+}
+
+nav a:hover {
+background-color: #ffcc00;
+color: #1f1f1f;
+}
+
+section {
+padding: 60px 20px;
+max-width: 1200px;
+margin: auto;
+}
+
+h2 {
+color: #ffcc00;
+margin-bottom: 20px;
+}
+
+.vertical {
+text-align: center;
+}
+
+.horizontal {
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+gap: 30px;
+}
+
+.horizontal .text, .horizontal .image {
+flex: 1;
+min-width: 300px;
+}
+
+.horizontal .image img {
+width: 100%;
+border-radius: 8px;
+}
+
+form input, form textarea {
+width: 100%;
+padding: 10px;
+margin-bottom: 15px;
+border: none;
+border-radius: 4px;
+}
+
+form button {
+background-color: #ffcc00;
+color: #1f1f1f;
+padding: 10px 20px;
+border: none;
+border-radius: 4px;
+font-weight: bold;
+cursor: pointer;
+}
+
+.thank-you {
+display: none;
+background-color: #2e2e2e;
+padding: 20px;
+text-align: center;
+border-radius: 8px;
+color: #aaffaa;
+margin-top: 20px;
+}
+
+footer {
+background-color: #111;
+color: #ccc;
+text-align: center;
+padding: 20px;
+}
+section {
+ scroll-margin-top: 80px;
+}
+nav.scrolled {
+    background-color: #000;
+    transition: background-color 0.3s ease;
+    }
+.menu-toggle {
+display: none;
+font-size: 28px;
+color: #f1f1f1;
+background: none;
+border: none;
+cursor: pointer;
+position: absolute;
+top: 15px;
+right: 20px;
+z-index: 1100;
+}
+
+@media (max-width: 768px) {
+nav {
+flex-direction: column;
+align-items: center;
+display: none;
+}
+
+nav.active {
+display: flex;
+}
+
+.menu-toggle {
+display: block;
+}
+}
+
+</style>
+</head>
+<body>
+
+<header>
+<h1>Superficies Aurum</h1>
+</header>
+<button class="menu-toggle" id="menutoggle">&#9776;</button>
+
+<nav>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#materials">Materials</a>
+<a href="#projects">Projects</a>
+<a href="#sinks">Sinks</a>
+<a href="#testimonials">Testimonials</a>
+<a href="#faq">FAQ</a>
+<a href="#quote">Quote</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<!-- Vertical Section -->
+<section id="about" class="vertical">
+<h2>About Us</h2>
+<p>We specialize in premium granite, quartz, and marble surfaces. Our goal is to transform your spaces with beauty and durability.</p>
+</section>
+
+<!-- Horizontal Section -->
+<section id="services" class="horizontal">
+<div class="text">
+<h2>Services</h2>
+<ul>
+<li>Kitchen Countertop Installation</li>
+<li>Bathroom Vanity Remodeling</li>
+<li>Custom Sink Integration</li>
+<li>Commercial Projects</li>
+</ul>
+</div>
+<div class="image">
+<img src="cosina.jpeg" alt="Kitchen Service">
+</div>
+</section>
+
+<!-- Vertical Section -->
+<section id="materials" class="vertical">
+<h2>Materials</h2>
+<p>We offer a variety of materials including:</p>
+<p><strong>Granite</strong> – Durable and timeless</p>
+<p><strong>Quartz</strong> – Elegant and maintenance-free</p>
+<p><strong>Marble</strong> – Classic luxury for any space</p>
+</section>
+
+<!-- Horizontal Section -->
+<section id="projects" class="horizontal">
+<div class="image">
+<img src="bano.jpeg" alt="Completed Project">
+</div>
+<div class="text">
+<h2>Projects</h2>
+<p>From residential kitchens to luxury bathrooms, we showcase excellence in every detail. Visit this section often for new gallery updates.</p>
+</div>
+</section>
+
+<!-- Vertical Section -->
+<section id="sinks" class="vertical">
+<h2>Sinks</h2>
+<p>Modern, under-mount, and farmhouse sinks available to complement your countertop perfectly.</p>
+</section>
+
+<!-- Horizontal Section -->
+<section id="testimonials" class="horizontal">
+<div class="text">
+<h2>Testimonials</h2>
+<p>"Amazing service and flawless finish. Highly recommended!" – Maria P.</p>
+<p>"Fast and reliable, they transformed my kitchen in just days." – James L.</p>
+</div>
+<div class="image">
+<img src="https://source.unsplash.com/600x400/?happy,customers" alt="Clients">
+</div>
+</section>
+
+<!-- Vertical Section -->
+<section id="faq" class="vertical">
+<h2>FAQ</h2>
+<p><strong>How long does installation take?</strong> Usually within 3–5 business days after material selection.</p>
+<p><strong>Do you offer warranty?</strong> Yes, all work includes a 1-year workmanship warranty.</p>
+</section>
+
+<!-- Quote Form -->
+<section id="quote" class="vertical">
+<h2>Get a Free Quote</h2>
+<form id="quoteForm" action="https://formspree.io/f/mwpbnvqo" method="POST">
+<input type="text" name="name" placeholder="Your Name" required />
+<input type="email" name="email" placeholder="Your Email" required />
+<input type="tel" name="phone" placeholder="Phone Number" />
+<textarea name="message" rows="5" placeholder="Tell us about your project..." required></textarea>
+<button type="submit">Send Request</button>
+</form>
+<div class="thank-you" id="thankYouMessage">Thank you! We'll get back to you shortly.</div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="vertical">
+<h2>Contact Us</h2>
+<p>Email: info@superficiesaurum.com</p>
+<p>Phone: (123) 456-7890</p>
+</section>
+
+<footer>
+&copy; 2025 Superficies Aurum. All rights reserved.
+</footer>
+
+<script>
+const form = document.getElementById('quoteForm');
+const thankYou = document.getElementById('thankYouMessage');
+
+form.addEventListener('submit', async function (e) {
+e.preventDefault();
+const formData = new FormData(form);
+const response = await fetch(form.action, {
+method: 'POST',
+body: formData,
+headers: { 'Accept': 'application/json' }
+});
+
+if (response.ok) {
+form.reset();
+thankYou.style.display = 'block';
+} else {
+alert('There was a problem sending your message. Please try again later.');
+}
+});
+</script>
+<script>
+const navbar = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+if (window.scrollY > 50) {
+navbar.classList.add('scrolled');
+} else {
+navbar.classList.remove('scrolled');
+}
+});
+</script>
+<script>
+const menuToggle = document.getElementById('menuToggle');
+const nav = document.querySelector('nav');
+
+menuToggle.addEventListener('click', () => {
+nav.classList.toggle('active');
+});
+</script>
+
+</body>
+</html>
