@@ -171,6 +171,50 @@ display: block;
 flex-direction: column;
 }
 }
+/* MODAL */
+.modal-overlay {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.6); /* fondo oscuro */
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 2000;
+}
+
+.modal-content {
+background-color: #2c2c2c;
+padding: 30px;
+border-radius: 10px;
+max-width: 500px;
+width: 90%;
+color: #f1f1f1;
+position: relative;
+text-align: left;
+}
+
+.modal-content h2 {
+margin-top: 0;
+color: #ffcc00;
+}
+
+.modal-close {
+position: absolute;
+top: 10px;
+right: 15px;
+font-size: 24px;
+cursor: pointer;
+color: #aaa;
+}
+
+.modal-close:hover {
+color: #fff;
+}
+
 </style>
 </head>
 <body>
@@ -267,8 +311,9 @@ flex-direction: column;
 </section>
 
 <!-- Quote (Initially Hidden) -->
-<section id="quote" class="vertical" style="display:none;">
+<section id="quote" class="vertical" style="display: none;">
 <h2>Get a Free Quote</h2>
+<div id="quoteContent">
 <form id="quoteForm" action="https://formspree.io/f/mwpbnvqo" method="POST">
 <input type="text" name="name" placeholder="Your Name" required />
 <input type="email" name="email" placeholder="Your Email" required />
@@ -276,8 +321,31 @@ flex-direction: column;
 <textarea name="message" rows="5" placeholder="Tell us about your project..." required></textarea>
 <button type="submit">Send Request</button>
 </form>
-<div class="thank-you" id="thankYouMessage">Thank you! We'll get back to you shortly.</div>
+</div>
+<div class="thank-you" id="thankYouMessage" style="display: none;">
+Thank you! We'll get back to you shortly.
+</div>
 </section>
+<!-- Modal for Quote -->
+<div class="modal-overlay" id="quoteModal" style="display: none;">
+<div class="modal-content">
+<span class="modal-close" id="closeModal">&times;</span>
+<h2>Get a Free Quote</h2>
+<div id="quoteContent">
+<form id="quoteForm" action="https://formspree.io/f/mwpbnvqo" method="POST">
+<input type="text" name="name" placeholder="Your Name" required />
+<input type="email" name="email" placeholder="Your Email" required />
+<input type="tel" name="phone" placeholder="Phone Number" />
+<textarea name="message" rows="5" placeholder="Tell us about your project..." required></textarea>
+<button type="submit">Send Request</button>
+</form>
+</div>
+<div class="thank-you" id="thankYouMessage" style="display: none;">
+Thank you! We'll get back to you shortly.
+</div>
+</div>
+</div>
+
 
 <!-- Footer -->
 <footer>
@@ -286,9 +354,37 @@ flex-direction: column;
 
 <!-- Scripts -->
 <script>
+const quoteBtn = document.getElementById('quoteBtn');
+const quoteModal = document.getElementById('quoteModal');
+const closeModal = document.getElementById('closeModal');
 const form = document.getElementById('quoteForm');
 const thankYou = document.getElementById('thankYouMessage');
+const quoteContent = document.getElementById('quoteContent');
 
+// Abrir el modal
+quoteBtn.addEventListener('click', (e) => {
+e.preventDefault();
+quoteModal.style.display = 'flex';
+});
+
+// Cerrar el modal
+closeModal.addEventListener('click', () => {
+quoteModal.style.display = 'none';
+// Resetear todo si se cierra manualmente
+quoteContent.style.display = 'block';
+thankYou.style.display = 'none';
+});
+
+// Cerrar si el usuario hace clic fuera del contenido
+window.addEventListener('click', (e) => {
+if (e.target === quoteModal) {
+quoteModal.style.display = 'none';
+quoteContent.style.display = 'block';
+thankYou.style.display = 'none';
+}
+});
+
+// Envío del formulario
 form.addEventListener('submit', async function (e) {
 e.preventDefault();
 const formData = new FormData(form);
@@ -300,33 +396,13 @@ headers: { 'Accept': 'application/json' }
 
 if (response.ok) {
 form.reset();
+quoteContent.style.display = 'none';
 thankYou.style.display = 'block';
 } else {
 alert('There was a problem sending your message. Please try again later.');
 }
 });
 
-const navbar = document.querySelector('nav');
-window.addEventListener('scroll', () => {
-if (window.scrollY > 50) {
-navbar.classList.add('scrolled');
-} else {
-navbar.classList.remove('scrolled');
-}
-});
-
-document.getElementById('quoteBtn').addEventListener('click', (e) => {
-e.preventDefault();
-document.getElementById('quote').style.display = 'block';
-document.getElementById('quote').scrollIntoView({ behavior: 'smooth' });
-});
-
-const menuToggle = document.getElementById('menutoggle');
-const nav = document.querySelector('nav');
-
-menuToggle.addEventListener('click', () => {
-nav.classList.toggle('active');
-});
 </script>
 
 </body>
