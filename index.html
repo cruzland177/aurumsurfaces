@@ -5,12 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Aurum Surfaces</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 body {
 margin: 0;
 font-family: 'Montserrat', sans-serif;
 background-color: #1f1f1f;
 color: #f1f1f1;
+scroll-behavior: smooth;
 }
 
 header {
@@ -31,6 +33,8 @@ z-index: 1000;
 display: flex;
 flex-wrap: wrap;
 justify-content: center;
+align-items: center;
+gap: 10px;
 background-color: #2c2c2c;
 padding: 10px 0;
 box-shadow: 0 2px 5px rgba(0,0,0,0.6);
@@ -38,7 +42,7 @@ box-shadow: 0 2px 5px rgba(0,0,0,0.6);
 
 nav a {
 color: #f1f1f1;
-margin: 0 10px;
+margin: 0 5px;
 text-decoration: none;
 padding: 8px 12px;
 border-radius: 5px;
@@ -50,10 +54,26 @@ background-color: #ffcc00;
 color: #1f1f1f;
 }
 
+nav i {
+font-size: 1.2rem;
+}
+.social-icon {
+font-size: 20px;
+margin-left: 10px;
+transition: color 0.3s;
+}
+.social-icon.facebook {
+color: #1877F2 !important;
+}
+.social-icon.instagram {
+color: #E1306C !important;
+}
+
 section {
 padding: 60px 20px;
 max-width: 1200px;
 margin: auto;
+scroll-margin-top: 80px;
 }
 
 h2 {
@@ -116,13 +136,12 @@ color: #ccc;
 text-align: center;
 padding: 20px;
 }
-section {
- scroll-margin-top: 80px;
-}
+
 nav.scrolled {
-    background-color: #000;
-    transition: background-color 0.3s ease;
-    }
+background-color: #000;
+transition: background-color 0.3s ease;
+}
+
 .menu-toggle {
 display: none;
 font-size: 28px;
@@ -142,16 +161,16 @@ flex-direction: column;
 align-items: center;
 display: none;
 }
-
 nav.active {
 display: flex;
 }
-
 .menu-toggle {
 display: block;
 }
+.horizontal {
+flex-direction: column;
 }
-
+}
 </style>
 </head>
 <body>
@@ -159,6 +178,7 @@ display: block;
 <header>
 <h1>Aurum Surfaces</h1>
 </header>
+
 <button class="menu-toggle" id="menutoggle">&#9776;</button>
 
 <nav>
@@ -169,17 +189,23 @@ display: block;
 <a href="#sinks">Sinks</a>
 <a href="#testimonials">Testimonials</a>
 <a href="#faq">FAQ</a>
-<a href="#quote">Quote</a>
+<a href="#" id="quoteBtn">Quote</a>
 <a href="#contact">Contact</a>
+<a href="https://facebook.com" target="_blank"> <i class="fab fa-facebook-f social-icon facebook"></i></a>
+<a href="https://instagram.com" target="_blank"> <i class="fab fa-instagram social-icon instagram"></i></a>
 </nav>
 
-<!-- Vertical Section -->
+<!-- About + Contact -->
 <section id="about" class="vertical">
 <h2>About Us</h2>
-<p>We specialize in premium granite, quartz, and marble surfaces. Our goal is to transform your spaces with beauty and durability.</p>
+<p>At Aurum Surfaces, we specialize in high-end granite, quartz, and marble installations designed to enhance your living and working spaces. With years of experience, our mission is to bring timeless elegance and functional beauty to every project we touch. We are committed to craftsmanship, attention to detail, and customer satisfaction.</p>
+<p>Whether you're renovating a kitchen, building a custom vanity, or designing a commercial space, our team is ready to help you choose the perfect materials and achieve the finish you envision. We handle every step from design consultation to installation, always using top-quality materials and expert techniques.</p>
+<h3>Contact Info</h3>
+<p>Email: info@superficiesaurum.com</p>
+<p>Phone: (123) 456-7890</p>
 </section>
 
-<!-- Horizontal Section -->
+<!-- Services -->
 <section id="services" class="horizontal">
 <div class="text">
 <h2>Services</h2>
@@ -195,7 +221,7 @@ display: block;
 </div>
 </section>
 
-<!-- Vertical Section -->
+<!-- Materials -->
 <section id="materials" class="vertical">
 <h2>Materials</h2>
 <p>We offer a variety of materials including:</p>
@@ -204,7 +230,7 @@ display: block;
 <p><strong>Marble</strong> – Classic luxury for any space</p>
 </section>
 
-<!-- Horizontal Section -->
+<!-- Projects -->
 <section id="projects" class="horizontal">
 <div class="image">
 <img src="bano.jpeg" alt="Completed Project">
@@ -215,13 +241,13 @@ display: block;
 </div>
 </section>
 
-<!-- Vertical Section -->
+<!-- Sinks -->
 <section id="sinks" class="vertical">
 <h2>Sinks</h2>
 <p>Modern, under-mount, and farmhouse sinks available to complement your countertop perfectly.</p>
 </section>
 
-<!-- Horizontal Section -->
+<!-- Testimonials -->
 <section id="testimonials" class="horizontal">
 <div class="text">
 <h2>Testimonials</h2>
@@ -233,15 +259,15 @@ display: block;
 </div>
 </section>
 
-<!-- Vertical Section -->
+<!-- FAQ -->
 <section id="faq" class="vertical">
 <h2>FAQ</h2>
 <p><strong>How long does installation take?</strong> Usually within 3–5 business days after material selection.</p>
 <p><strong>Do you offer warranty?</strong> Yes, all work includes a 1-year workmanship warranty.</p>
 </section>
 
-<!-- Quote Form -->
-<section id="quote" class="vertical">
+<!-- Quote (Initially Hidden) -->
+<section id="quote" class="vertical" style="display:none;">
 <h2>Get a Free Quote</h2>
 <form id="quoteForm" action="https://formspree.io/f/mwpbnvqo" method="POST">
 <input type="text" name="name" placeholder="Your Name" required />
@@ -253,17 +279,12 @@ display: block;
 <div class="thank-you" id="thankYouMessage">Thank you! We'll get back to you shortly.</div>
 </section>
 
-<!-- Contact -->
-<section id="contact" class="vertical">
-<h2>Contact Us</h2>
-<p>Email: info@superficiesaurum.com</p>
-<p>Phone: (123) 456-7890</p>
-</section>
-
+<!-- Footer -->
 <footer>
 &copy; 2025 Aurum Surfaces. All rights reserved.
 </footer>
 
+<!-- Scripts -->
 <script>
 const form = document.getElementById('quoteForm');
 const thankYou = document.getElementById('thankYouMessage');
@@ -284,8 +305,7 @@ thankYou.style.display = 'block';
 alert('There was a problem sending your message. Please try again later.');
 }
 });
-</script>
-<script>
+
 const navbar = document.querySelector('nav');
 window.addEventListener('scroll', () => {
 if (window.scrollY > 50) {
@@ -294,9 +314,14 @@ navbar.classList.add('scrolled');
 navbar.classList.remove('scrolled');
 }
 });
-</script>
-<script>
-const menuToggle = document.getElementById('menuToggle');
+
+document.getElementById('quoteBtn').addEventListener('click', (e) => {
+e.preventDefault();
+document.getElementById('quote').style.display = 'block';
+document.getElementById('quote').scrollIntoView({ behavior: 'smooth' });
+});
+
+const menuToggle = document.getElementById('menutoggle');
 const nav = document.querySelector('nav');
 
 menuToggle.addEventListener('click', () => {
